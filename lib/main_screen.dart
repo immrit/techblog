@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tec/component/my_colors.dart';
 import 'package:tec/gen/assets.gen.dart';
+import 'package:tec/model/fake_data.dart';
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var wi = MediaQuery.of(context).size.width;
     var he = MediaQuery.of(context).size.height;
+
+    var textTheme = Theme.of(context).textTheme;
+
     return SafeArea(
       child: Scaffold(
           body: Padding(
@@ -34,7 +38,8 @@ class MainScreen extends StatelessWidget {
                           // color: Colors.amber,
                           borderRadius: BorderRadius.circular(16),
                           image: DecorationImage(
-                              image: Assets.images.posterTest.image().image,
+                              image:
+                                  AssetImage(homePagePosterMap["imageAsset"]),
                               fit: BoxFit.cover)),
                       foregroundDecoration: BoxDecoration(
                           // color: Colors.amber,
@@ -45,7 +50,7 @@ class MainScreen extends StatelessWidget {
                               end: Alignment.bottomCenter))),
                 ),
                 Positioned(
-                  bottom: 0,
+                  bottom: he * .02,
                   left: 0,
                   right: 0,
                   child: Column(
@@ -54,19 +59,24 @@ class MainScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            "ملیکا عزیزی - یک روز پیش",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            "253 لایک",
-                            style: TextStyle(color: Colors.white),
+                              homePagePosterMap["writer"] +
+                                  " - " +
+                                  homePagePosterMap["date"],
+                              style: textTheme.subtitle1),
+                          Row(
+                            children: [
+                              Text(homePagePosterMap["view"],
+                                  style: textTheme.subtitle1),
+                              SizedBox(width: wi * .01),
+                              Icon(Icons.remove_red_eye,
+                                  color: Color.fromARGB(200, 255, 255, 255),
+                                  size: he * .02),
+                            ],
                           ),
                         ],
                       ),
-                      Text(
-                        "253 لایک",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      Text("دوازده قدم برنامه نویسی یک دوره ی....س",
+                          style: textTheme.headline1),
                     ],
                   ),
                 )
