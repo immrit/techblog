@@ -22,9 +22,9 @@ class MainScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Icon(Icons.menu),
+                const Icon(Icons.menu),
                 Assets.images.logo.image(height: he / 13.6),
-                Icon(Icons.search)
+                const Icon(Icons.search)
               ],
             ),
             SizedBox(height: he * .02),
@@ -44,7 +44,7 @@ class MainScreen extends StatelessWidget {
                       foregroundDecoration: BoxDecoration(
                           // color: Colors.amber,
                           borderRadius: BorderRadius.circular(16),
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                               colors: GradiantColors.homePosterCoverGradiant,
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter))),
@@ -69,7 +69,8 @@ class MainScreen extends StatelessWidget {
                                   style: textTheme.subtitle1),
                               SizedBox(width: wi * .01),
                               Icon(Icons.remove_red_eye,
-                                  color: Color.fromARGB(200, 255, 255, 255),
+                                  color:
+                                      const Color.fromARGB(200, 255, 255, 255),
                                   size: he * .02),
                             ],
                           ),
@@ -81,6 +82,40 @@ class MainScreen extends StatelessWidget {
                   ),
                 )
               ],
+            ),
+            SizedBox(
+              height: he * .08,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: tagList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Container(
+                        height: he * .08,
+                        // width: wi * .09,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            gradient: const LinearGradient(
+                                colors: GradiantColors.tags,
+                                begin: Alignment.centerRight,
+                                end: Alignment.centerLeft)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Assets.icons.hashtagicon.image(),
+                              SizedBox(width: wi * .02),
+                              Text(
+                                tagList[index].title,
+                                style: textTheme.headline1,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
             )
           ],
         ),
