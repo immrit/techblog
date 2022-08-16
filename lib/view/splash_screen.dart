@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tec/component/my_colors.dart';
 import 'package:tec/gen/assets.gen.dart';
-import 'package:tec/main_screen.dart';
+import 'package:tec/view/main_screen.dart';
 
 class splashScreen extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class splashScreen extends StatefulWidget {
 class _splashScreenState extends State<splashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3)).then((value) => Navigator.of(context)
+    Future.delayed(Duration(seconds: 1)).then((value) => Navigator.of(context)
         .pushReplacement(
             MaterialPageRoute(builder: (context) => MainScreen())));
 
