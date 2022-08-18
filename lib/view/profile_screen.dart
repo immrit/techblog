@@ -4,9 +4,10 @@ import '../component/my_colors.dart';
 import '../component/my_strings.dart';
 import '../gen/assets.gen.dart';
 import '../model/fake_data.dart';
+import '../component/my_component.dart';
 
-class homeScreen extends StatelessWidget {
-  const homeScreen({
+class profileScreen extends StatelessWidget {
+  const profileScreen({
     Key? key,
     required this.he,
     required this.wi,
@@ -22,36 +23,80 @@ class homeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+        physics: const BouncingScrollPhysics(),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //poster
-            homePagePoster(wi: wi, he: he, textTheme: textTheme),
-            SizedBox(
-              height: he * .025,
+            Assets.images.profileAvatar.image(height: 100),
+            const SizedBox(
+              height: 12,
             ),
-
-            homePageTagList(
-                he: he, bodyMargin: bodyMargin, wi: wi, textTheme: textTheme),
-            SizedBox(height: he * .05),
-            SeemoreBlog(
-                bodyMargin: bodyMargin, he: he, wi: wi, textTheme: textTheme),
-            homePageBlogList(
-                he: he, bodyMargin: bodyMargin, wi: wi, textTheme: textTheme),
-            SizedBox(height: he * .05),
-            SeemorePodcast(
-                bodyMargin: bodyMargin, he: he, wi: wi, textTheme: textTheme),
-            homePagePodcastList(he: he, bodyMargin: bodyMargin, wi: wi),
-
-            SizedBox(
-              height: he * .08,
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Assets.icons.bluePen
+                    .image(width: wi * .05, color: SolidColors.seeMore),
+                Text(
+                  MyStrings.imageProfileEdit,
+                  style: textTheme.headline3,
+                )
+              ],
+            ),
+            const SizedBox(height: 60),
+            Text(
+              "فاطمه امیری",
+              style: textTheme.headline4,
+            ),
+            Text(
+              "fatom@gmail.com",
+              style: textTheme.headline4,
+            ),
+            const SizedBox(height: 40),
+            techDivider(wi: wi),
+            InkWell(
+              onTap: () {},
+              splashColor: SolidColors.primeryColor,
+              child: SizedBox(
+                height: 45,
+                child: Center(
+                  child: Text(
+                    MyStrings.myFavBlog,
+                    style: textTheme.headline4,
+                  ),
+                ),
+              ),
+            ),
+            techDivider(wi: wi),
+            InkWell(
+              onTap: () {},
+              splashColor: SolidColors.primeryColor,
+              child: SizedBox(
+                height: 45,
+                child: Center(
+                  child: Text(
+                    MyStrings.myFavPodcast,
+                    style: textTheme.headline4,
+                  ),
+                ),
+              ),
+            ),
+            techDivider(wi: wi),
+            InkWell(
+              onTap: () {},
+              splashColor: SolidColors.primeryColor,
+              child: SizedBox(
+                height: 45,
+                child: Center(
+                  child: Text(
+                    MyStrings.logOut,
+                    style: textTheme.headline4,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 60),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
 

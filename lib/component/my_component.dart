@@ -1,30 +1,30 @@
-// import 'dart:developer';
+import 'dart:developer';
 
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-// // import '../gen/assets.gen.dart';
-// // import '../models/fake_data.dart';
-// // import 'package:url_launcher/url_launcher.dart';
-// import 'my_colors.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import '../gen/assets.gen.dart';
+// import '../models/fake_data.dart';
+// import 'package:url_launcher/url_launcher.dart';
+import 'my_colors.dart';
 
-// class TechDivider extends StatelessWidget {
-//   const TechDivider({
-//     Key? key,
-//     required this.size,
-//   }) : super(key: key);
+class techDivider extends StatelessWidget {
+  const techDivider({
+    Key? key,
+    required this.wi,
+  }) : super(key: key);
 
-//   final Size size;
+  final double wi;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Divider(
-//       thickness: 1.5,
-//       color: SolidColors.dividerColor,
-//       indent: size.width / 6,
-//       endIndent: size.width / 6,
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Divider(
+      color: SolidColors.dividerColor,
+      thickness: .5,
+      indent: wi / 6,
+      endIndent: wi / 6,
+    );
+  }
+}
 
 // class MainTags extends StatelessWidget {
 //   MainTags({
