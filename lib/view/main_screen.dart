@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tec/component/my_colors.dart';
-import 'package:tec/component/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
-import 'package:tec/model/fake_data.dart';
 import 'package:tec/view/profile_screen.dart';
+import 'package:tec/view/register_intro.dart';
 
 import 'home_screen.dart';
 
+// ignore: use_key_in_widget_constructors
 class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -20,10 +17,10 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     var wi = MediaQuery.of(context).size.width;
     var he = MediaQuery.of(context).size.height;
     double bodyMargin = wi / 10;
-    var textTheme = Theme.of(context).textTheme;
 
     return SafeArea(
       child: Scaffold(
@@ -41,23 +38,22 @@ class _MainScreenState extends State<MainScreen> {
         ),
         body: Stack(
           children: [
-            Center(
-              child: Positioned.fill(
-                child: IndexedStack(
-                  index: selectedPageIndex,
-                  children: [
-                    homeScreen(
-                        he: he,
-                        wi: wi,
-                        textTheme: textTheme,
-                        bodyMargin: bodyMargin),
-                    profileScreen(
-                        he: he,
-                        wi: wi,
-                        textTheme: textTheme,
-                        bodyMargin: bodyMargin)
-                  ],
-                ),
+            Positioned.fill(
+              child: IndexedStack(
+                index: selectedPageIndex,
+                children: [
+                  HomeScreen(
+                      he: he,
+                      wi: wi,
+                      textTheme: textTheme,
+                      bodyMargin: bodyMargin),
+                  RegisterIntro(),
+                  ProfileScreen(
+                      he: he,
+                      wi: wi,
+                      textTheme: textTheme,
+                      bodyMargin: bodyMargin)
+                ],
               ),
             ),
             BottomNavigation(
@@ -115,9 +111,11 @@ class BottomNavigation extends StatelessWidget {
                   onPressed: () => changeScreen(0),
                   icon: Assets.icons.home.image(),
                 ),
-                IconButton(onPressed: () {}, icon: Assets.icons.write.image()),
                 IconButton(
                     onPressed: () => changeScreen(1),
+                    icon: Assets.icons.write.image()),
+                IconButton(
+                    onPressed: () => changeScreen(2),
                     icon: Assets.icons.user.image())
               ],
             ),

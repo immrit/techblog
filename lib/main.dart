@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tec/gen/assets.gen.dart';
-import 'package:tec/view/splash_screen.dart';
+import 'package:tec/view/main_screen.dart';
+import 'package:tec/view/register_intro.dart';
 
 import 'component/my_colors.dart';
 
@@ -12,7 +12,7 @@ void main() {
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: SolidColors.systemNavigationBarColor,
       systemNavigationBarIconBrightness: Brightness.dark));
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,15 +21,35 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     return MaterialApp(
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [Locale('fa', '')],
+      supportedLocales: const [Locale('fa', '')],
       title: 'Flutter Demo',
       theme: ThemeData(
+          inputDecorationTheme: InputDecorationTheme(
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: const BorderSide(width: 2))),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+            textStyle: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return textTheme.headline5;
+              }
+              return textTheme.subtitle1;
+            }),
+            backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return SolidColors.seeMore;
+              }
+              return SolidColors.primeryColor;
+            }),
+          )),
           primarySwatch: Colors.blue,
           textTheme: const TextTheme(
             headline1: TextStyle(
@@ -66,7 +86,7 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.w700),
           )),
       debugShowCheckedModeBanner: false,
-      home: splashScreen(),
+      home: MainScreen(),
     );
   }
 }

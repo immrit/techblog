@@ -5,8 +5,8 @@ import '../component/my_strings.dart';
 import '../gen/assets.gen.dart';
 import '../model/fake_data.dart';
 
-class homeScreen extends StatelessWidget {
-  const homeScreen({
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({
     Key? key,
     required this.he,
     required this.wi,
@@ -22,28 +22,28 @@ class homeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
         child: Column(
           children: [
             //poster
-            homePagePoster(wi: wi, he: he, textTheme: textTheme),
+            HomePagePoster(wi: wi, he: he, textTheme: textTheme),
             SizedBox(
               height: he * .025,
             ),
 
-            homePageTagList(
+            HomePageTagList(
                 he: he, bodyMargin: bodyMargin, wi: wi, textTheme: textTheme),
             SizedBox(height: he * .05),
             SeemoreBlog(
                 bodyMargin: bodyMargin, he: he, wi: wi, textTheme: textTheme),
-            homePageBlogList(
+            HomePageBlogList(
                 he: he, bodyMargin: bodyMargin, wi: wi, textTheme: textTheme),
             SizedBox(height: he * .05),
             SeemorePodcast(
                 bodyMargin: bodyMargin, he: he, wi: wi, textTheme: textTheme),
-            homePagePodcastList(he: he, bodyMargin: bodyMargin, wi: wi),
+            HomePagePodcastList(he: he, bodyMargin: bodyMargin, wi: wi),
 
             SizedBox(
               height: he * .08,
@@ -55,8 +55,8 @@ class homeScreen extends StatelessWidget {
   }
 }
 
-class homePagePodcastList extends StatelessWidget {
-  const homePagePodcastList({
+class HomePagePodcastList extends StatelessWidget {
+  const HomePagePodcastList({
     Key? key,
     required this.he,
     required this.bodyMargin,
@@ -146,8 +146,8 @@ class SeemorePodcast extends StatelessWidget {
   }
 }
 
-class homePageBlogList extends StatelessWidget {
-  const homePageBlogList({
+class HomePageBlogList extends StatelessWidget {
+  const HomePageBlogList({
     Key? key,
     required this.he,
     required this.bodyMargin,
@@ -272,8 +272,8 @@ class SeemoreBlog extends StatelessWidget {
   }
 }
 
-class homePageTagList extends StatelessWidget {
-  const homePageTagList({
+class HomePageTagList extends StatelessWidget {
+  const HomePageTagList({
     Key? key,
     required this.he,
     required this.bodyMargin,
@@ -327,8 +327,8 @@ class homePageTagList extends StatelessWidget {
   }
 }
 
-class homePagePoster extends StatelessWidget {
-  const homePagePoster({
+class HomePagePoster extends StatelessWidget {
+  const HomePagePoster({
     Key? key,
     required this.wi,
     required this.he,

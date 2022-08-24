@@ -1,14 +1,10 @@
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../gen/assets.gen.dart';
 // import '../models/fake_data.dart';
 // import 'package:url_launcher/url_launcher.dart';
 import 'my_colors.dart';
 
-class techDivider extends StatelessWidget {
-  const techDivider({
+class TechDivider extends StatelessWidget {
+  const TechDivider({
     Key? key,
     required this.wi,
   }) : super(key: key);

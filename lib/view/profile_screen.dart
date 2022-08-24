@@ -6,8 +6,8 @@ import '../gen/assets.gen.dart';
 import '../model/fake_data.dart';
 import '../component/my_component.dart';
 
-class profileScreen extends StatelessWidget {
-  const profileScreen({
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({
     Key? key,
     required this.he,
     required this.wi,
@@ -24,84 +24,87 @@ class profileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Assets.images.profileAvatar.image(height: 100),
-            const SizedBox(
-              height: 12,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Assets.icons.bluePen
-                    .image(width: wi * .05, color: SolidColors.seeMore),
-                Text(
-                  MyStrings.imageProfileEdit,
-                  style: textTheme.headline3,
-                )
-              ],
-            ),
-            const SizedBox(height: 60),
-            Text(
-              "فاطمه امیری",
-              style: textTheme.headline4,
-            ),
-            Text(
-              "fatom@gmail.com",
-              style: textTheme.headline4,
-            ),
-            const SizedBox(height: 40),
-            techDivider(wi: wi),
-            InkWell(
-              onTap: () {},
-              splashColor: SolidColors.primeryColor,
-              child: SizedBox(
-                height: 45,
-                child: Center(
-                  child: Text(
-                    MyStrings.myFavBlog,
-                    style: textTheme.headline4,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Assets.images.profileAvatar.image(height: 100),
+              const SizedBox(
+                height: 12,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Assets.icons.bluePen
+                      .image(width: wi * .05, color: SolidColors.seeMore),
+                  Text(
+                    MyStrings.imageProfileEdit,
+                    style: textTheme.headline3,
+                  )
+                ],
+              ),
+              const SizedBox(height: 60),
+              Text(
+                "فاطمه امیری",
+                style: textTheme.headline4,
+              ),
+              Text(
+                "fatom@gmail.com",
+                style: textTheme.headline4,
+              ),
+              const SizedBox(height: 40),
+              TechDivider(wi: wi),
+              InkWell(
+                onTap: () {},
+                splashColor: SolidColors.primeryColor,
+                child: SizedBox(
+                  height: 45,
+                  child: Center(
+                    child: Text(
+                      MyStrings.myFavBlog,
+                      style: textTheme.headline4,
+                    ),
                   ),
                 ),
               ),
-            ),
-            techDivider(wi: wi),
-            InkWell(
-              onTap: () {},
-              splashColor: SolidColors.primeryColor,
-              child: SizedBox(
-                height: 45,
-                child: Center(
-                  child: Text(
-                    MyStrings.myFavPodcast,
-                    style: textTheme.headline4,
+              TechDivider(wi: wi),
+              InkWell(
+                onTap: () {},
+                splashColor: SolidColors.primeryColor,
+                child: SizedBox(
+                  height: 45,
+                  child: Center(
+                    child: Text(
+                      MyStrings.myFavPodcast,
+                      style: textTheme.headline4,
+                    ),
                   ),
                 ),
               ),
-            ),
-            techDivider(wi: wi),
-            InkWell(
-              onTap: () {},
-              splashColor: SolidColors.primeryColor,
-              child: SizedBox(
-                height: 45,
-                child: Center(
-                  child: Text(
-                    MyStrings.logOut,
-                    style: textTheme.headline4,
+              TechDivider(wi: wi),
+              InkWell(
+                onTap: () {},
+                splashColor: SolidColors.primeryColor,
+                child: SizedBox(
+                  height: 45,
+                  child: Center(
+                    child: Text(
+                      MyStrings.logOut,
+                      style: textTheme.headline4,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 60),
-          ],
+              const SizedBox(height: 60),
+            ],
+          ),
         ));
   }
 }
 
-class homePagePodcastList extends StatelessWidget {
-  const homePagePodcastList({
+class HomePagePodcastList extends StatelessWidget {
+  const HomePagePodcastList({
     Key? key,
     required this.he,
     required this.bodyMargin,
@@ -191,8 +194,8 @@ class SeemorePodcast extends StatelessWidget {
   }
 }
 
-class homePageBlogList extends StatelessWidget {
-  const homePageBlogList({
+class HomePageBlogList extends StatelessWidget {
+  const HomePageBlogList({
     Key? key,
     required this.he,
     required this.bodyMargin,
@@ -317,8 +320,8 @@ class SeemoreBlog extends StatelessWidget {
   }
 }
 
-class homePageTagList extends StatelessWidget {
-  const homePageTagList({
+class HomePageTagList extends StatelessWidget {
+  const HomePageTagList({
     Key? key,
     required this.he,
     required this.bodyMargin,
@@ -372,8 +375,8 @@ class homePageTagList extends StatelessWidget {
   }
 }
 
-class homePagePoster extends StatelessWidget {
-  const homePagePoster({
+class HomePagePoster extends StatelessWidget {
+  const HomePagePoster({
     Key? key,
     required this.wi,
     required this.he,
