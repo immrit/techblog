@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tec/component/my_colors.dart';
 import 'package:tec/component/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
+import 'package:tec/view/my_cats.dart.dart';
+import 'package:validators/validators.dart';
 
 class RegisterIntro extends StatelessWidget {
   const RegisterIntro({Key? key}) : super(key: key);
@@ -74,9 +76,74 @@ class RegisterIntro extends StatelessWidget {
                         decoration: InputDecoration(
                             hintText: "techblog@gmail.com",
                             hintStyle: textTheme.headline5),
+                        onChanged: ((value) {
+                          isEmail(value);
+                          print(value + "is Email" + isEmail(value).toString());
+                        }),
                       ),
                     ),
-                    ElevatedButton(onPressed: () {}, child: const Text("ادامه"))
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+
+                          _activeCodeBottomSheet(context, he, textTheme);
+                        },
+                        child: const Text("ادامه"))
+                  ],
+                ),
+              ),
+            ),
+          );
+        }));
+  }
+
+  Future<dynamic> _activeCodeBottomSheet(
+      BuildContext context, double he, TextTheme textTheme) {
+    return showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: ((context) {
+          return Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: Container(
+              height: he / 2,
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  )),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      MyStrings.activateCode,
+                      style: textTheme.headline4,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                      child: TextField(
+                        textAlign: TextAlign.center,
+                        style: textTheme.headline4,
+                        decoration: InputDecoration(
+                            hintText: "techblog@gmail.com",
+                            hintStyle: textTheme.headline5),
+                        onChanged: ((value) {
+                          isEmail(value);
+                          print(value + "is Email" + isEmail(value).toString());
+                        }),
+                      ),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => MyCats()));
+                        },
+                        child: const Text("ادامه"))
                   ],
                 ),
               ),

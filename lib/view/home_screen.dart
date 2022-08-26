@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../component/my_colors.dart';
+import '../component/my_component.dart';
 import '../component/my_strings.dart';
 import '../gen/assets.gen.dart';
 import '../model/fake_data.dart';
@@ -297,29 +298,11 @@ class HomePageTagList extends StatelessWidget {
             return Padding(
               padding:
                   EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
-              child: Container(
-                height: he * .08,
-                // width: wi * .09,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    gradient: const LinearGradient(
-                        colors: GradiantColors.tags,
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft)),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                  child: Row(
-                    children: [
-                      Assets.icons.hashtagicon
-                          .image(color: Colors.white, width: wi * .05),
-                      SizedBox(width: wi * .02),
-                      Text(
-                        tagList[index].title,
-                        style: textTheme.headline1,
-                      ),
-                    ],
-                  ),
-                ),
+              child: MainTags(
+                he: he,
+                wi: wi,
+                textTheme: textTheme,
+                index: index,
               ),
             );
           }),
