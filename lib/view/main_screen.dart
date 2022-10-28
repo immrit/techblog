@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tec/component/my_colors.dart';
+import 'package:tec/component/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/view/profile_screen.dart';
 import 'package:tec/view/register_intro.dart';
 
 import 'home_screen.dart';
 
-// ignore: use_key_in_widget_constructors
-class MainScreen extends StatefulWidget {
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _MainScreenState extends State<MainScreen> {
-  var selectedPageIndex = 0;
+class MainScreen extends StatelessWidget {
+  RxInt selectedPageIndex = 0.obs;
+
+  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +48,16 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const Divider(
-                color: SolidColors.dividerColor,
+                 color: SolidColors.dividerColor,
               ),
               ListTile(
                 title: Text(
                   "اشتراک گذاری تک بلاگ",
                   style: textTheme.headline4,
                 ),
+                onTap: (() async {
+                  await Share.share(MyStrings.shareText);
+                }),
               ),
               const Divider(
                 color: SolidColors.dividerColor,
@@ -92,30 +94,27 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
             Positioned.fill(
-              child: IndexedStack(
-                index: selectedPageIndex,
-                children: [
-                  HomeScreen(
-                      he: he,
-                      wi: wi,
-                      textTheme: textTheme,
-                      bodyMargin: bodyMargin),
-                  RegisterIntro(),
-                  ProfileScreen(
-                      he: he,
-                      wi: wi,
-                      textTheme: textTheme,
-                      bodyMargin: bodyMargin)
-                ],
-              ),
-            ),
+                child: Obx((() => IndexedStack(
+                      index: selectedPageIndex.value,
+                      children: [
+                        HomeScreen(
+                            he: he,
+                            wi: wi,
+                            textTheme: textTheme,
+                            bodyMargin: bodyMargin),
+                        RegisterIntro(),
+                        ProfileScreen(
+                            he: he,
+                            wi: wi,
+                            textTheme: textTheme,
+                            bodyMargin: bodyMargin)
+                      ],
+                    )))),
             BottomNavigation(
               bodyMargin: bodyMargin,
               he: he,
               changeScreen: (int value) {
-                setState(() {
-                  selectedPageIndex = value;
-                });
+                selectedPageIndex.value = value;
               },
             ),
           ],
